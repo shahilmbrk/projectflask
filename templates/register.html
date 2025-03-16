@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Registeration Page</h2>
+<div class="mb-3 mt-3">
+    <a href="{{ url_for('login') }}" class="nav-button btn btn-primary">Login</a>
+    <a href="{{ url_for('register') }}" class="nav-button btn btn-secondary">Register</a>
+</div>
+<form method="POST">
+    <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input type="text" class="form-control" id="username" name="username" required>
+    </div>
+    <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" id="password" name="password" required>
+    </div>
+    <div class="mb-3">
+        <label for="role" class="form-label">Role</label>
+        <select class="form-control" id="role" name="role" required>
+            <option value="Student">Student</option>
+            <option value="Staff">Staff</option>
+            <option value="Coordinator">Coordinator</option>
+            <option value="Admin">Admin</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Register</button>
+</form>
+{% endblock %}

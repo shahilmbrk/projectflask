@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="dashboard-container">
+    <!-- Navigation Bar -->
+    <div class="dashboard-nav">
+        <h2>Admin Dashboard</h2>
+        <p>Welcome, {{ current_user.username }}!</p>
+        <div class="nav-options">
+            <a href="{{ url_for('admin_dashboard') }}" class="nav-button">Dashboard</a>
+            <a href="{{ url_for('admin_requests') }}" class="nav-button">Registration Requests</a>
+            <a href="{{ url_for('admin_students') }}" class="nav-button">Students</a>
+            <a href="{{ url_for('admin_staff') }}" class="nav-button">Staff</a>
+            <a href="{{ url_for('admin_coordinators') }}" class="nav-button">Coordinators</a>
+            <a href="{{ url_for('logout') }}" class="nav-button logout">Logout</a>
+        </div>
+    </div>
+
+    <!-- Staff Content -->
+    <div class="dashboard-content">
+        <h3>Staff</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Full Name</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for staff in staff_members %}
+                <tr>
+                    <td>{{ staff.username }}</td>
+                    <td>{{ staff.full_name or 'Not provided' }}</td>
+                    <td>
+                        <form method="POST" action="{{ url_for('delete_user', user_id=staff.id) }}" style="display: inline;">
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

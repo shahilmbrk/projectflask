@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="dashboard-container">
+    <!-- Navigation Bar -->
+    <div class="dashboard-nav">
+        <h2>Staff Dashboard</h2>
+        <p>Welcome, {{ current_user.username }}!</p>
+        <div class="nav-options">
+            <a href="{{ url_for('staff_dashboard') }}" class="nav-button">Dashboard</a>
+            <a href="{{ url_for('staff_communication') }}" class="nav-button">Communication</a>
+            <a href="{{ url_for('staff_project_proposals') }}" class="nav-button">Project Proposals</a>
+            <a href="{{ url_for('staff_manage') }}" class="nav-button">Manage</a>
+            <a href="{{ url_for('logout') }}" class="nav-button logout">Logout</a>
+        </div>
+    </div>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard-content">
+        <h3>Welcome to the Staff Dashboard</h3>
+        <p>Use the navigation bar to access different sections of your dashboard.</p>
+    </div>
+</div>
+{% endblock %}
